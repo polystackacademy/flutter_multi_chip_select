@@ -1,3 +1,4 @@
-## 0.0.1
+## 0.1.0 2020/01/28
 
-* TODO: Describe initial release.
+- Initial Commit with default picker.
+  - Use this package if the style fits your need, in future releases I will add multiple styles for selecting and customizing chips.
