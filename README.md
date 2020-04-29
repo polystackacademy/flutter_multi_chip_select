@@ -39,7 +39,9 @@ FlutterMultiChipSelect(
             value: menuItems[index].toString()),
       ),
       label: "Dropdown Select",
-      values: [],
+      values: [
+        1, 2 // Pass Initial value array or leave empty array.
+      ],
     )
 ```
 
