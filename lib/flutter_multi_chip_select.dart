@@ -21,7 +21,12 @@ class MultiSelectItem<T> {
       @required this.value,
       List<Widget> actions,
       this.disabled = false}) {
-    this.child = Text(title);
+    this.child = Text(title,
+        style: TextStyle(
+          fontSize: 14,
+          color: Colors.black54,
+          decoration: TextDecoration.none,
+        ));
     this.actions = actions;
   }
 }
@@ -50,6 +55,15 @@ class MultiSelectDropdownState extends State<FlutterMultiChipSelect> {
   List _result = [];
   List get result => this._result;
 
+  void updateSelectedState(MultiSelectItem<dynamic> source, bool state) {
+    setState(() {
+      source.isSelected = state;
+      if (this.widget.values.contains(source.value)) {
+        source.isSelected = true;
+      }
+    });
+  }
+
   Widget _getContent() {
     if (this._result.length <= 0 && this.widget.label != null) {
       return Padding(
@@ -70,9 +84,11 @@ class MultiSelectDropdownState extends State<FlutterMultiChipSelect> {
           children: this
               .widget
               .elements
-              .where((element) => this._result.contains(element.value))
+              .where((element) => this
+                  ._result
+                  .contains(element.value))
               .map((element) {
-            element.isSelected = true;
+            updateSelectedState(element, true); //element.isSelected = true;
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 1),
               child: RawChip(
@@ -80,8 +96,8 @@ class MultiSelectDropdownState extends State<FlutterMultiChipSelect> {
                 label: element.child,
                 onDeleted: () {
                   if (!this.widget.disabled) {
+                    updateSelectedState(element, false);
                     setState(() {
-                      element.isSelected = false;
                       this._result.remove(element.value);
                     });
                   }
@@ -97,7 +113,7 @@ class MultiSelectDropdownState extends State<FlutterMultiChipSelect> {
   @override
   void initState() {
     super.initState();
-    if (this.widget.values != null) this._result = this.widget.values;
+    if (this.widget.values != null) this._result = this.widget.values.map((x) => x.toString()).toList();
   }
 
   void _showMultipleSelectDialog() async {
@@ -178,7 +194,7 @@ class SelectListModalState extends State<SelectListModal> {
   @override
   void initState() {
     super.initState();
-    if (this.widget.values != null) _result = this.widget.values;
+    if (this.widget.values != null) this._result = this.widget.values;
   }
 
   List<Widget> _buildItemRow(MultiSelectItem item) {

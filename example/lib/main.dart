@@ -46,7 +46,9 @@ class _MyAppState extends State<MyApp> {
                             value: menuItems[index].toString()),
                       ),
                       label: "Dropdown Select",
-                      values: [],
+                      values: [
+                        1,2
+                      ],
                     ),
                   ),
                   IconButton(
