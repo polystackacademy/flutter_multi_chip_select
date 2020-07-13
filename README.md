@@ -14,7 +14,8 @@ dependencies:
 ## Usage example
 
 ### Bottom Popup with no filters
-![](https://github.com/thepolyglots/resources/blob/master/packages/multiple_chip_select/simple_select.gif?raw=true)
+<img src="https://github.com/thepolyglots/resources/blob/master/packages/multiple_chip_select/simple_select.gif?raw=true" width="150px">
+
 ```dart
 final multiSelectKey = GlobalKey<MultiSelectDropdownState>();
 var menuItems = [1, 2, 3, 4, 5, 6];
@@ -39,7 +40,9 @@ FlutterMultiChipSelect(
             value: menuItems[index].toString()),
       ),
       label: "Dropdown Select",
-      values: [],
+      values: [
+        1, 2 // Pass Initial value array or leave empty array.
+      ],
     )
 ```
 
