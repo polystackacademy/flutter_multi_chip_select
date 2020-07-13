@@ -11,6 +11,13 @@ dependencies:
  flutter_multi_chip_select: ^0.1.0
 ```
 
+## Features
+
+- [x] Created base library structure.
+- [ ] Add support to multiple select layouts.
+- [ ] Implement custom styling of components.
+- [ ] Light/Dark Theme  support.
+
 ## Usage example
 
 ### Bottom Popup with no filters
